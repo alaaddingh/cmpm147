@@ -31,7 +31,7 @@ function main() {
   potion_container: ["Flask", "Hydro Flask", "Bottle", "Sack", "Jug"],
   potion_material: ["Play Doh", "Unicorn Carcass", "Drywall", "Rusty Metal"],
   ingredient: ["a Lion Mane", "some Chin Whiskers", "some Troll Phlegm", "some Crunchy Berries", "a Phoenix Feather", "some Beetle Blend"],
-  potion_effect: ["Call your parents", "Regret life decisions at 2 am", "Levitate, but only 5mm from the ground", "become an excellent battle rapper", "invisibility but for as long as you refrain from blinking"],
+  potion_effect: ["Call your parents", "Regret life decisions at 2 am", "Levitate, but only 5mm from the ground", "become an excellent battle rapper", "become invisibile but for as long as you refrain from blinking"],
   enemies: ["Indocrinated Goblins", "Your Opps", "Poor Tippers", "Orcs with exceptionally poor hygiene", "Centrist Hyenas"],
 }
 
