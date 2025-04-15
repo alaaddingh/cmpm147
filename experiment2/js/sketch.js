@@ -33,15 +33,15 @@ function regenerateScene() {
     stars.push({
       x: random(width),
       y: random(height / 2),
-      baseSize: random(0.5, 2),
-      flickerSpeed: random(0.01, 0.03),
+      baseSize: random(2, 5),
+      flickerSpeed: random(0.01, 0.05),
       flickerPhase: random(TWO_PI)
     });
   }
 
   // Clouds
   clouds = [];
-  for (let i = 0; i < int(random(3, 6)); i++) {
+  for (let i = 0; i < int(random(10, 15)); i++) {
     clouds.push({
       x: random(width),
       y: random(height * 0.05, height * 0.65),
@@ -55,7 +55,7 @@ function regenerateScene() {
 function resizeScreen() {
   centerHorz = canvasContainer.width()  / 2;
   centerVert = canvasContainer.height() / 2;
-  resizeCanvas(canvasContainer.width(), canvasContainer.height() / 3);
+  resizeCanvas(canvasContainer.width(), canvasContainer.height());
   regenerateScene();
 }
 
@@ -132,7 +132,7 @@ function draw() {
   vertex(width, height - 10);
   endShape(CLOSE);
 
-  // 6) Fog band
+  // Fog band
   fill(lowerskyColor2);
   beginShape();
   vertex(0, height - 10);
@@ -143,27 +143,21 @@ function draw() {
   vertex(width, height - 10);
   endShape(CLOSE);
 
-  // 7) Crescent moon
   drawCrescentMoon(width / 1.5, height / 6, 32);
 
-  // 8) Clouds (before trees)
   drawClouds();
 
-  // 9) Background trees
   for (let i = 0; i < int(random(60, 100)); i++) {
-    drawPineTree(random(width), height + 30, random(5, 40), treeColor2);
+    drawPineTree(random(width), height + 30, random(5, 30), treeColor2);
   }
 
-  // 10) Foreground trees
   for (let i = 0; i < int(random(30, 49)); i++) {
     drawPineTree(random(width), height + 30, random(5, 40), treeColor);
   }
 
-  // 11) Ground strip
   fill(treeColor);
   rect(0, height - 20, width, height - 10);
 
-  // 12) Stars (overlay)
   for (const s of stars) {
     let flicker = sin(frameCount * s.flickerSpeed + s.flickerPhase) * 0.5 + 0.5;
     fill(180 + flicker * 75);
@@ -171,7 +165,6 @@ function draw() {
   }
 }
 
-// ---------------------- Helper functions
 function drawCrescentMoon(x, y, r) {
   noStroke();
   fill(moonColor);
@@ -198,7 +191,7 @@ function drawPineTree(x, yBottom, size, col) {
   fill(col);
   noStroke();
   const tiers = 4;
-  const tierH = (size * 2) / tiers;
+  const tierH = (size * 6) / tiers;
   for (let i = 0; i < tiers; i++) {
     let top = yBottom - i * tierH;
     let bw  = size - i * (size / 4);
