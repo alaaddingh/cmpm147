@@ -17,7 +17,6 @@
           
               if (rooms.some(r=> x0<r.x+r.w && x0+w>r.x && y0<r.y+r.h && y0+h>r.y)) continue;
           
-              // carve room tiles
               for (let y=y0; y<y0+h; y++){
                 for (let x=x0; x<x0+w; x++){
                   grid[y][x] =
@@ -26,7 +25,6 @@
                 }
               }
           
-              // corridors to previous room
               if (rooms.length){
                 const prev = rooms[rooms.length-1];
                 const pc = {x:floor(prev.x+prev.w/2), y:floor(prev.y+prev.h/2)};

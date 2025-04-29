@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Weaving Kufiyah – Procedural Pattern Sketch</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- styles -->
+  <link rel="stylesheet" href="../css/site.css" />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- libraries -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+          integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+          crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.9.2/lib/p5.js"></script>
+
+  <!-- sketch scripts -->
+  <script src="../js/site.js" defer></script>
+  <script src="js/xxhash.min.js" defer></script>
+  <script src="js/engine.js"     defer></script>
+  <script src="js/my_world.js"   defer></script>
+</head>
+
+<body>
+  <main id="content">
+    <section>
+
+      <h1>Experiment 04 - Infinite Worlds</h1>
+
+      <div class="minor-section">
+        <h2>Interactive Pattern</h2>
+
+        <!-- p5 canvas lives here -->
+        <div id="container"></div>
+
+        <div class="fullscreen-box instructions">
+          <div>Arrow keys scroll • Click tiles to toggle watermelon / olive sprigs</div>
+          <div>Seed:
+            <input type="text" id="world-seed" value="xyzzy" />
+          </div>
+          <button id="fullscreen">Fullscreen</button>
+        </div>
+      </div>
+
+      <div class="minor-section two-columns">
+        <div class="showcase-img">
+          <img src="../img/kufiyah-preview.png" alt="Preview of the kufiyah pattern"  style="max-width:100%; height:auto;" />
+        </div>
+        <div>
+          <h2>Artist Statement</h2>
+          <p><em>Weaving Kufiyah</em> turns the Palestinian scarf into an infinite, click-reactive playground.  The sketch
+             procedurally builds a black-net kufiyah across an endless field of diamond tiles.
+             A single click drops a watermelon slice, a symbol of
+             resilience and heritage, while some tiles are wrapped with olive buds.</p>
+
+          <p>The piece joins textile tradition with code.  A 32-bit <code>XXH32</code> hash of the world
+             seed drives <code>noiseSeed()</code> and <code>randomSeed()</code>, guaranteeing that every key produces a
+             repeatable, sharable pattern. Cross-hatched threads drift diagonally across the cloth,
+             and a subtle tan discoloration is present via Perlin noise, giving the digital fabric a woven depth.</p>
+
+          <p>Where a real kufiyah has borders, this one is infinite and it keeps
+             weaving. </p>
+
+          <sup>Shukran to WesBot for wording assists :D</sup>
+        </div>
+      </div>
+
+      <div class="minor-section">
+        <h2>Technical Notes</h2>
+        <p>The tile engine in <code>engine.js</code> draws a staggered isometric grid.  For each tile
+           <code>(i,j)</code> <code>my_world.js</code> hashes a few different strings to pick:</p>
+        <ul>
+          <li>tan shade and cross-hatch offset</li>
+          <li>olive-sprig vs. dot decoration</li>
+          <li>animated watermelon phase when the tile is clicked</li>
+        </ul>
+        <p>Because every decision is keyed to <code>(i,j)</code> + <code>worldSeed</code>, the landscape is both
+           infinite and completely deterministic.</p>
+      </div>
+
+      <div class="minor-section">
+        <h2>Reflection</h2>
+        <p>This sketch grew out of a class demo on infinite scrolling worlds.  Re-contextualising
+           it as a cultural artefact made the math feel less abstract and a lot more personal. I gained inspiration from seeing other people's personal designs from Experiment2 and it inspired me to up the ante for my next project. I wanted all 3 of my generations to be about identity and I believe I successfully created 3 generators which embodies Levantine patterns and culture.</p>
+      </div>
+
+    </section>
+
+    <nav id="links" class="minor-section">
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+      </ul>
+    </nav>
+  </main>
+</body>
+</html>

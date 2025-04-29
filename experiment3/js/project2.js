@@ -9,13 +9,13 @@ let rows2, cols2;
 const SIZE = 16;
 let hover2 = { x:-1, y:-1 };
 
-function preload() {                    // <- renamed from preload2
+function preload() {                   
   tilesetImage2 = window.tilesetImage ||
       loadImage("https://cdn.glitch.com/25101045-29e2-407a-894c-e0243cd8c7c6%2FtilesetP8.png?v=1611654020438",
                 img => window.tilesetImage = img);
 }
 
-function setup() {                      // <- renamed from setup2
+function setup() {                    
   cols2 = select("#asciiBox2").attribute("rows") | 0;
   rows2 = select("#asciiBox2").attribute("cols") | 0;
 
@@ -28,14 +28,13 @@ function setup() {                      // <- renamed from setup2
   reseed2();
 }
 
-function draw() {                       // <- renamed from draw2
+function draw() {
   randomSeed(seed2);
   hover2.x = floor(mouseX / SIZE);
   hover2.y = floor(mouseY / SIZE);
   drawGrid2(grid2, hover2);
 }
 
-/* helpers – unchanged */
 function reseed2(){
   seed2 += 1109; randomSeed(seed2); noiseSeed(seed2);
   select("#seedReport2").html("seed " + seed2);
@@ -50,5 +49,4 @@ function placeTile(i,j,ti,tj){
   image(tilesetImage2, SIZE*j, SIZE*i, SIZE, SIZE, 8*ti,8*tj,8,8);
 }
 
-/* tell p5 to start a second global-mode sketch */
 new p5();
