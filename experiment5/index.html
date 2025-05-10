@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>Experiment 5 - Evolutionary Impressions</title>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" type="text/css" href="../css/site.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/p5@1.9.2/lib/p5.js"></script>
+    <script type="text/javascript" src="../js/site.js" defer></script>
+	<script type="text/javascript" src="./js/mydesign.js" defer></script>
+	<script type="text/javascript" src="./js/sketch.js" defer></script>
+</head>
+<body>
+	<main id="content">
+		<section>
+			<h1>Evolutionary Impressions — A Generative Mutation Project</h1>
+
+```
+		<div class="minor-section results">
+            <div class="results-top">
+                <div class="image-container">
+                    <p id="original"></p>
+                    <p class="caption"></p>
+                </div>
+                <div class="image-container">
+                    <p id="active"></p>
+                    <p>Active Image</p>
+                </div>
+                <div class="image-container">
+                    <p id="best"></p>
+                    <p>Best Image</p>
+                </div>
+            </div>
+
+            <div class="controls">
+                <div class="controls-col1">
+                    <select id="dropper"></select>
+                    <button id="restart">restart</button>
+                    <p>
+                    Mutation rate (<span id="rate"></span>%):<br /><input
+                        id="slider"
+                        type="range"
+                        min="1"
+                        max="100"
+                        value="100"
+                    />
+                    </p>
+                </div>
+                <div class="controls-col2">
+                    <p>Active score: <span id="activeScore"></span></p>
+                    <p>Exploration rate: <span id="fpsCounter"></span> fps</p>
+                    <p>Best score: <span id="bestScore"></span></p>
+                </div>
+            </div>
+
+            <div class="results-bottom">
+                <p id="memory" data-max-items="28"></p>
+            </div>
+		</div>
+
+		<div class="minor-section">
+			<h2>Description</h2>
+			<p>This generator is my take on simulated mutation. You pick a source image, and the program tries to evolve toward it by gradually mutating its visual structure. Over time, as the mutation rate drops, the rendered attempts gets more refined.</p>
+			<p>There are three scenes to choose from: "Rain on Window," "Foggy Forest," and "Green Bubbles." Each uses its own parameters to try and evoke the same concept of its source image. Fog is made of soft triangle clusters, rain uses watery reflections, and the bubbles go full abstract, with white rings and green glows.</p>
+		</div>
+
+		<div class="minor-section">
+			<h2>Technical</h2>
+            <ol>
+                <li>Each scene has distinct parameters and visuals. The logic differs slightly from scene to scene, meaning they are not just mere reskins.</li>
+                <li>The mutation rate slider controls how intense the design changes are. At 100%, there is no rhyme or reason to the variations, it tries everything with the provided parameters to simulate the given image. At 1%, the mutations are much more precise.</li>
+                <li>Annealing is built in. The goal is to start wild and slowly hone in, just like how nature works.</li>
+                <li>The designs aim to capture the emotional tone of the reference photos rather than recreate them pixel-by-pixel.</li>
+            </ol>
+		</div>
+
+		<div class="minor-section">
+			<h2>Annealing</h2>
+            <p>This works best when you ease up on mutation gradually. Start with 100%, let the generator go on for a bit, and then start dialing it back as it gets closer to something visually pleasing. This should be executed over the span of 30 seconds.</p>
+			<p>You’ll probably have the most fun if you manually slide the mutation rate down and watch the generator start locking in interesting patterns and textures.</p>
+		</div>
+
+		<div class="minor-section">
+			<h2>Reflection</h2>
+            <p>At the start of this assignment, I was honestly kind of confused about what the end result was supposed to feel like. I thought picking a super recognizable image, like a portrait of an affluential figure (I tried to generate one  of Ghassan Kanafani) or a yin-yang sticker, would help the generator lock onto something visual. Turns out, that approach just made everything look worse. The designs couldn’t hold up to that level of specificity, as it just wasn't what this project was meant to do.</p>
+		    <p>Once I stepped away from those hyper-specific images and leaned into more abstract, mood-driven inspiration, things started to click. I realized the generator thrives on freedom. Instead of trying to guide it with strict shapes or symbols, I started building parameters that were more open-ended, which let the mutation process breathe a bit. As I progressed in the assignment, each preset became less about replicating the actual source image and more about capturing its energy, or an alternate variation of the image could look like.</p>
+		    <p>Through trial and error, I learned how small changes in the parameter ranges such as tone values, drop shapes, or background strokes with varying patches levels of opacity would allow the generator to eventually pinpoint the visuals more accurately. </p>
+		
+		</div>
+	</section>
+
+	<nav id="links" class="minor-section">
+        <ul>
+            <li><a href="../index.html">Back to Home</a></li>
+        </ul>
+	</nav>
+</main>
+```
+
+</body>
+</html>
